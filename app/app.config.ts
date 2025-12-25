@@ -9,7 +9,7 @@ export default defineAppConfig({
   description: 'A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.',
   image: 'https://sink.cool/banner.png',
   previewTTL: 300, // 5 minutes
-  slugRegex: /^[a-z0-9가-힣]+(?:-[a-z0-9가-힣]+)*$/i,
+  slugRegex: /^[a-zA-Z0-9가-힣]+(?:-[a-zA-Z0-9가-힣]+)*$/,
   reserveSlug: [
     'dashboard',
   ],
