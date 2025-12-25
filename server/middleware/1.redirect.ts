@@ -3,7 +3,8 @@ import type { z } from 'zod'
 import { parsePath, withQuery } from 'ufo'
 
 export default eventHandler(async (event) => {
-  const { pathname: slug } = parsePath(event.path.replace(/^\/|\/$/g, '')) // remove leading and trailing slashes
+  const rawSlug = parsePath(event.path.replace(/^\/|\/$/g, '')).pathname // remove leading and trailing slashes
+  const slug = decodeURIComponent(rawSlug) // 한글 등 유니코드 슬러그 지원
   const { slugRegex, reserveSlug } = useAppConfig(event)
   const { homeURL, linkCacheTtl, redirectWithQuery, caseSensitive } = useRuntimeConfig(event)
   const { cloudflare } = event.context
